@@ -1,0 +1,27 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+                    <PackageReference Include="SmartSql.TypeHandler" Version="4.1.50" />
+        <PackageReference Include="SmartSql.Schema" Version="4.1.30" />
+        <PackageReference Include="SmartSql.ScriptTag" Version="4.1.50" />
+        <PackageReference Include="SmartSql.DyRepository" Version="4.1.50" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Permission.Entity\Permission.Entity.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="Maps\*.xml">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="SmartSqlMapConfig.xml">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="SmartSqlMapConfig.Development.xml">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+</Project>
+
