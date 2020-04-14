@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj",
+      "projectUniqueName": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj",
       "projectName": "Permission.Entity",
-      "projectPath": "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj",
+      "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj",
       "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-      "outputPath": "D:\\workspace\\permission\\src\\Permission.Entity\\obj\\",
+      "outputPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

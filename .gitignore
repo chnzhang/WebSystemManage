@@ -1,3 +1,11 @@
 
 db/sqlserver/permission.mdf
 db/sqlserver/permission_log.ldf
+src/webapi/Permission/Permission.Api/bin/*
+src/webapi/Permission/Permission.Api/obj/*
+src/webapi/Permission/Permission.Entity/bin/*
+src/webapi/Permission/Permission.Entity/obj/*
+src/webapi/Permission/Permission.Repository/bin/*
+src/webapi/Permission/Permission.Repository/obj/*
+src/webapi/Permission/Permission.Service/bin/*
+src/webapi/Permission/Permission.Service/obj/*

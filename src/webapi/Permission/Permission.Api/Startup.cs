@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +16,7 @@ namespace Permission.Api
 {
     public class Startup
     {
+        const string SERVICE_NAME = "Permission.API";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +28,27 @@ namespace Permission.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            RegisterRepository(services);
+            RegisterService(services);           
+        }
+
+        private void RegisterRepository(IServiceCollection services)
+        {
+            services.AddSmartSql()
+            .AddRepositoryFromAssembly(options =>
+            {
+                options.AssemblyString = "Permission.Repository";
+            });
+        }
+        private void RegisterService(IServiceCollection services)
+        {
+            var assembly = Assembly.Load("Permission.Service");
+            var allTypes = assembly.GetTypes();
+            foreach (var type in allTypes)
+            {
+                services.AddSingleton(type);
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +59,7 @@ namespace Permission.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 

@@ -2,6 +2,60 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "AspectCore.Abstractions/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
+        }
+      },
+      "AspectCore.Core/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "AspectCore.Abstractions": "1.2.0",
+          "AspectCore.Extensions.Reflection": "1.2.0",
+          "Microsoft.CSharp": "4.5.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AspectCore.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AspectCore.Core.dll": {}
+        }
+      },
+      "AspectCore.Extensions.DependencyInjection/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "AspectCore.Core": "1.2.0",
+          "Microsoft.Extensions.DependencyInjection": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll": {}
+        }
+      },
+      "AspectCore.Extensions.Reflection/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Threading.Tasks.Extensions": "4.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
+        }
+      },
       "Jint/2.11.58": {
         "type": "package",
         "compile": {
@@ -11,6 +65,48 @@
           "lib/netstandard2.0/Jint.dll": {}
         }
       },
+      "Microsoft.CSharp/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/Microsoft.CSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
       "Microsoft.Extensions.Logging.Abstractions/2.0.0": {
         "type": "package",
         "compile": {
@@ -18,6 +114,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {
@@ -62,7 +170,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "SmartSql/4.1.50": {
+      "SmartSql/4.1.53": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
@@ -77,10 +185,39 @@
           "lib/netstandard2.0/SmartSql.dll": {}
         }
       },
-      "SmartSql.DyRepository/4.1.50": {
+      "SmartSql.AOP/4.1.53": {
         "type": "package",
         "dependencies": {
-          "SmartSql": "4.1.50"
+          "AspectCore.Extensions.DependencyInjection": "1.2.0",
+          "SmartSql": "4.1.53",
+          "SmartSql.DIExtension": "4.1.53"
+        },
+        "compile": {
+          "lib/netstandard2.0/SmartSql.AOP.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SmartSql.AOP.dll": {}
+        }
+      },
+      "SmartSql.DIExtension/4.1.53": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "2.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "SmartSql": "4.1.53",
+          "SmartSql.DyRepository": "4.1.53"
+        },
+        "compile": {
+          "lib/netstandard2.0/SmartSql.DIExtension.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SmartSql.DIExtension.dll": {}
+        }
+      },
+      "SmartSql.DyRepository/4.1.53": {
+        "type": "package",
+        "dependencies": {
+          "SmartSql": "4.1.53"
         },
         "compile": {
           "lib/netstandard2.0/SmartSql.DyRepository.dll": {}
@@ -99,11 +236,11 @@
           }
         }
       },
-      "SmartSql.ScriptTag/4.1.50": {
+      "SmartSql.ScriptTag/4.1.53": {
         "type": "package",
         "dependencies": {
           "Jint": "2.11.58",
-          "SmartSql": "4.1.50"
+          "SmartSql": "4.1.53"
         },
         "compile": {
           "lib/netstandard2.0/SmartSql.ScriptTag.dll": {}
@@ -112,11 +249,11 @@
           "lib/netstandard2.0/SmartSql.ScriptTag.dll": {}
         }
       },
-      "SmartSql.TypeHandler/4.1.50": {
+      "SmartSql.TypeHandler/4.1.53": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2",
-          "SmartSql": "4.1.50"
+          "SmartSql": "4.1.53"
         },
         "compile": {
           "lib/netstandard2.0/SmartSql.TypeHandler.dll": {}
@@ -226,6 +363,15 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
+      "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
       "System.Text.Encoding/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -248,6 +394,18 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
+      "System.Threading.Tasks.Extensions/4.5.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
+        }
+      },
       "Permission.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -263,10 +421,10 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Permission.Entity": "1.0.0",
-          "SmartSql.DyRepository": "4.1.50",
+          "SmartSql.DyRepository": "4.1.53",
           "SmartSql.Schema": "4.1.30",
-          "SmartSql.ScriptTag": "4.1.50",
-          "SmartSql.TypeHandler": "4.1.50"
+          "SmartSql.ScriptTag": "4.1.53",
+          "SmartSql.TypeHandler": "4.1.53"
         },
         "compile": {
           "bin/placeholder/Permission.Repository.dll": {}
@@ -278,6 +436,57 @@
     }
   },
   "libraries": {
+    "AspectCore.Abstractions/1.2.0": {
+      "sha512": "NR8NmRpQvy30+iHOAf0GwGf2FNIQF6U4rzMPv9PiC0p8rp6sknNFDPe2Z2nKJ+lU4WN7R/Io62Okdj7hmcGIyw==",
+      "type": "package",
+      "path": "aspectcore.abstractions/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspectcore.abstractions.1.2.0.nupkg.sha512",
+        "aspectcore.abstractions.nuspec",
+        "lib/net45/AspectCore.Abstractions.dll",
+        "lib/netstandard2.0/AspectCore.Abstractions.dll"
+      ]
+    },
+    "AspectCore.Core/1.2.0": {
+      "sha512": "c7eCvV7lpz803GhO11MbQ3yRFIF52vM0Kh2jDo7zFGdNHUOwtDsfdpfrqmQnyY6yDhdz2fPQLnLw8Aw6Ee1zig==",
+      "type": "package",
+      "path": "aspectcore.core/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspectcore.core.1.2.0.nupkg.sha512",
+        "aspectcore.core.nuspec",
+        "lib/net45/AspectCore.Core.dll",
+        "lib/netstandard2.0/AspectCore.Core.dll"
+      ]
+    },
+    "AspectCore.Extensions.DependencyInjection/1.2.0": {
+      "sha512": "NlciRe3Rfq2F51zkprWf7a7SzWW8880DodZAp7p19Twnnkbt1HP0NfE9Eap44FEms6mfuFvYDa/mEOn5PFHR2w==",
+      "type": "package",
+      "path": "aspectcore.extensions.dependencyinjection/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspectcore.extensions.dependencyinjection.1.2.0.nupkg.sha512",
+        "aspectcore.extensions.dependencyinjection.nuspec",
+        "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll"
+      ]
+    },
+    "AspectCore.Extensions.Reflection/1.2.0": {
+      "sha512": "+9Ebk4YNMIueiJGhFbrfF8Zr9XY462lRaw6IgYgtfxSopoZSMRlksPnCIxWGoXBijuMeUjRbnULWaTwuZXZLgw==",
+      "type": "package",
+      "path": "aspectcore.extensions.reflection/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspectcore.extensions.reflection.1.2.0.nupkg.sha512",
+        "aspectcore.extensions.reflection.nuspec",
+        "lib/net45/AspectCore.Extensions.Reflection.dll",
+        "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll"
+      ]
+    },
     "Jint/2.11.58": {
       "sha512": "obRlPnuSmbjO7I2bfuKc1d+K1LB3xyg1Cnm2MT7PGUOHOntcdR96pDhsQnWBI5Dhxqr1Bj5/odpNi/B+AwVlPA==",
       "type": "package",
@@ -294,6 +503,117 @@
         "lib/netstandard2.0/Jint.dll"
       ]
     },
+    "Microsoft.CSharp/4.5.0": {
+      "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "type": "package",
+      "path": "microsoft.csharp/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/Microsoft.CSharp.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.3/Microsoft.CSharp.dll",
+        "lib/netstandard2.0/Microsoft.CSharp.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/uap10.0.16299/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "microsoft.csharp.4.5.0.nupkg.sha512",
+        "microsoft.csharp.nuspec",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/Microsoft.CSharp.dll",
+        "ref/netcore50/Microsoft.CSharp.xml",
+        "ref/netcore50/de/Microsoft.CSharp.xml",
+        "ref/netcore50/es/Microsoft.CSharp.xml",
+        "ref/netcore50/fr/Microsoft.CSharp.xml",
+        "ref/netcore50/it/Microsoft.CSharp.xml",
+        "ref/netcore50/ja/Microsoft.CSharp.xml",
+        "ref/netcore50/ko/Microsoft.CSharp.xml",
+        "ref/netcore50/ru/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/Microsoft.CSharp.dll",
+        "ref/netstandard1.0/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/de/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/es/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/fr/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/it/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ja/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ko/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ru/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hans/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hant/Microsoft.CSharp.xml",
+        "ref/netstandard2.0/Microsoft.CSharp.dll",
+        "ref/netstandard2.0/Microsoft.CSharp.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/uap10.0.16299/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/2.0.0": {
+      "sha512": "rHFrXqMIvQNq51H8RYTO4IWmDOYh8NUzyqGlh0xHWTP6XYnKk7Ryinys2uDs+Vu88b3AMlM3gBBSs78m6OQpYQ==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.abstractions/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "microsoft.extensions.configuration.abstractions.2.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection/2.1.1": {
+      "sha512": "RVdgNWT/73M0eCpreGpWv5NmbHFGQzzW+G7nChK8ej84m+d1nzeWrtqcRYnEpKNx3B8V/Uek4tNP0WCaCNjYnQ==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
+        "microsoft.extensions.dependencyinjection.2.1.1.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.1": {
+      "sha512": "MgYpU5cwZohUMKKg3sbPhvGG+eAZ/59E9UwPwlrUkyXU+PGzqwZg9yyQNjhxuAWmoNoFReoemeCku50prYSGzA==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.2.1.1.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Logging.Abstractions/2.0.0": {
       "sha512": "6ZCllUYGFukkymSTx3Yr0G/ajRxoNJp7/FqSxSB4fGISST54ifBhgu4Nc0ItGi3i6DqwuNd8SUyObmiC++AO2Q==",
       "type": "package",
@@ -305,6 +625,19 @@
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/2.0.0": {
+      "sha512": "ukg53qNlqTrK38WA30b5qhw0GD7y3jdI9PHHASjdKyTcBHTevFM2o23tyk3pWCgAV27Bbkm+CPQ2zUe1ZOuYSA==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.2.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -495,29 +828,55 @@
         "newtonsoft.json.nuspec"
       ]
     },
-    "SmartSql/4.1.50": {
-      "sha512": "ymHjwqQRVPA/EIMct6cBrERXnVTDW38P2dzoDNAwISDDdsFE4x3kbwK0Vnv0ZTSRXXnd1xM7DfIUrVov/QG2mA==",
+    "SmartSql/4.1.53": {
+      "sha512": "+1a1v/GQd20WtD/wHLS/0CijnjAlUQdaOqT2BiqwfR3GI7xw5w8h6hRvwHUKPdH6o5z2kAjkHV80nITEe8SVhQ==",
       "type": "package",
-      "path": "smartsql/4.1.50",
+      "path": "smartsql/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.dll",
         "lib/netstandard2.0/SmartSql.pdb",
-        "smartsql.4.1.50.nupkg.sha512",
+        "smartsql.4.1.53.nupkg.sha512",
         "smartsql.nuspec"
       ]
     },
-    "SmartSql.DyRepository/4.1.50": {
-      "sha512": "tfQk/VYrQ4Uasqv5pvI+d0oBL4+h37JwX09LU6Gp90nlblqsvLcm7T5GxqoBXrtiBuSgqDB4h0msj406HLSrRQ==",
+    "SmartSql.AOP/4.1.53": {
+      "sha512": "PPmacUWqoW5cXr659XBqFQW75VFZY+BBWYYgb3bN1+l2UzQXkRd+KXMg60EmiZExTNY31Z2lrkJuo6NIS7FVJQ==",
       "type": "package",
-      "path": "smartsql.dyrepository/4.1.50",
+      "path": "smartsql.aop/4.1.53",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SmartSql.AOP.dll",
+        "lib/netstandard2.0/SmartSql.AOP.pdb",
+        "smartsql.aop.4.1.53.nupkg.sha512",
+        "smartsql.aop.nuspec"
+      ]
+    },
+    "SmartSql.DIExtension/4.1.53": {
+      "sha512": "U7aIDeMwDRqLfp6AlEptfKlk7XcLZ0/c44wEA2AdsqEkdDkvmnd2khLfO7kcCRpGHlpsjKQYNIcN0maII5aozw==",
+      "type": "package",
+      "path": "smartsql.diextension/4.1.53",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SmartSql.DIExtension.dll",
+        "lib/netstandard2.0/SmartSql.DIExtension.pdb",
+        "smartsql.diextension.4.1.53.nupkg.sha512",
+        "smartsql.diextension.nuspec"
+      ]
+    },
+    "SmartSql.DyRepository/4.1.53": {
+      "sha512": "387iKMPPTd9opPCi4ieHR2lu8rooKA1nwPly+3e0yXnSI3WwaFy9Z4FfH45HYllPm3BEzvvP22TgH/8+uBXFiw==",
+      "type": "package",
+      "path": "smartsql.dyrepository/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.DyRepository.dll",
         "lib/netstandard2.0/SmartSql.DyRepository.pdb",
-        "smartsql.dyrepository.4.1.50.nupkg.sha512",
+        "smartsql.dyrepository.4.1.53.nupkg.sha512",
         "smartsql.dyrepository.nuspec"
       ]
     },
@@ -536,29 +895,29 @@
         "smartsql.schema.nuspec"
       ]
     },
-    "SmartSql.ScriptTag/4.1.50": {
-      "sha512": "sSru0JYTas2rhn/1BtSl3tfXZK719TTOzjy/G0vPm283Ph7M8xPzS5B9QZuHr1m7VTcNLhWsuzFsLQfU8IFdGg==",
+    "SmartSql.ScriptTag/4.1.53": {
+      "sha512": "FNfr7OzZmbZxdYydfxCHLMK93WZjJr/XwFmdPaiZmxOEHYj/63Fb5l9Hztapu9Ke2kwcr4+5nzB9p3z19AZDKw==",
       "type": "package",
-      "path": "smartsql.scripttag/4.1.50",
+      "path": "smartsql.scripttag/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.ScriptTag.dll",
         "lib/netstandard2.0/SmartSql.ScriptTag.pdb",
-        "smartsql.scripttag.4.1.50.nupkg.sha512",
+        "smartsql.scripttag.4.1.53.nupkg.sha512",
         "smartsql.scripttag.nuspec"
       ]
     },
-    "SmartSql.TypeHandler/4.1.50": {
-      "sha512": "VY7wE1CIwyD2JbvsuGpMWjcz/m310IPoZpz+u31K5cM7/AuQpXvaHd3hnd4xfCM0Muw2BKAcF35vo7lrrWt1bQ==",
+    "SmartSql.TypeHandler/4.1.53": {
+      "sha512": "Sf9whBxip+3kI7b6BahyVcyyPygxCeWMUAuKmtaDGaRm/J15aPZ6ELWh4yZ3cKNrSqOZPhZWSBOB1LaDjWuvFw==",
       "type": "package",
-      "path": "smartsql.typehandler/4.1.50",
+      "path": "smartsql.typehandler/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.TypeHandler.dll",
         "lib/netstandard2.0/SmartSql.TypeHandler.pdb",
-        "smartsql.typehandler.4.1.50.nupkg.sha512",
+        "smartsql.typehandler.4.1.53.nupkg.sha512",
         "smartsql.typehandler.nuspec"
       ]
     },
@@ -1020,6 +1379,33 @@
         "system.runtime.nuspec"
       ]
     },
+    "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+      "sha512": "YrzNWduCDHhUaSRBxHxL11UkM2fD6y8hITHis4/LbQZ6vj3vdRjoH3IoPWWC9uDXK2wHIqn+b5gv1Np/VKyM1g==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/uap10.0.16300/_._",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/uap10.0.16300/_._",
+        "system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Text.Encoding/4.3.0": {
       "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
       "type": "package",
@@ -1154,6 +1540,45 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "System.Threading.Tasks.Extensions/4.5.1": {
+      "sha512": "WSKUTtLhPR8gllzIWO2x6l4lmAIfbyMAiTlyXAis4QBDonXK4b4S6F8zGARX4/P8wH3DH+sLdhamCiHn+fTU1A==",
+      "type": "package",
+      "path": "system.threading.tasks.extensions/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netcoreapp2.1/_._",
+        "ref/netstandard1.0/System.Threading.Tasks.Extensions.dll",
+        "ref/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "ref/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "ref/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.extensions.4.5.1.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "Permission.Entity/1.0.0": {
       "type": "project",
       "path": "../Permission.Entity/Permission.Entity.csproj",
@@ -1169,7 +1594,8 @@
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
       "Permission.Entity >= 1.0.0",
-      "Permission.Repository >= 1.0.0"
+      "Permission.Repository >= 1.0.0",
+      "SmartSql.AOP >= 4.1.53"
     ]
   },
   "packageFolders": {
@@ -1179,11 +1605,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\workspace\\permission\\src\\Permission.Service\\Permission.Service.csproj",
+      "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj",
       "projectName": "Permission.Service",
-      "projectPath": "D:\\workspace\\permission\\src\\Permission.Service\\Permission.Service.csproj",
+      "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj",
       "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-      "outputPath": "D:\\workspace\\permission\\src\\Permission.Service\\obj\\",
+      "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1202,11 +1628,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj": {
-              "projectPath": "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj"
+            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
+              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
             },
-            "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj": {
-              "projectPath": "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj"
+            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
+              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj"
             }
           }
         }
@@ -1225,6 +1651,10 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "SmartSql.AOP": {
+            "target": "Package",
+            "version": "[4.1.53, )"
           }
         },
         "imports": [

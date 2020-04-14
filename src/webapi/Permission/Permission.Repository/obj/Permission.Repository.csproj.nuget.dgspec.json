@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj": {}
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {}
   },
   "projects": {
-    "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj",
         "projectName": "Permission.Entity",
-        "projectPath": "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "D:\\workspace\\permission\\src\\Permission.Entity\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -62,14 +62,14 @@
         }
       }
     },
-    "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj",
         "projectName": "Permission.Repository",
-        "projectPath": "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "D:\\workspace\\permission\\src\\Permission.Repository\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -88,8 +88,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj": {
-                "projectPath": "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
               }
             }
           }
@@ -111,7 +111,7 @@
             },
             "SmartSql.DyRepository": {
               "target": "Package",
-              "version": "[4.1.50, )"
+              "version": "[4.1.53, )"
             },
             "SmartSql.Schema": {
               "target": "Package",
@@ -119,11 +119,11 @@
             },
             "SmartSql.ScriptTag": {
               "target": "Package",
-              "version": "[4.1.50, )"
+              "version": "[4.1.53, )"
             },
             "SmartSql.TypeHandler": {
               "target": "Package",
-              "version": "[4.1.50, )"
+              "version": "[4.1.53, )"
             }
           },
           "imports": [

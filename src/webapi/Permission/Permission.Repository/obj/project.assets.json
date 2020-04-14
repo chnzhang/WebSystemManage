@@ -62,7 +62,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "SmartSql/4.1.50": {
+      "SmartSql/4.1.53": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
@@ -77,10 +77,10 @@
           "lib/netstandard2.0/SmartSql.dll": {}
         }
       },
-      "SmartSql.DyRepository/4.1.50": {
+      "SmartSql.DyRepository/4.1.53": {
         "type": "package",
         "dependencies": {
-          "SmartSql": "4.1.50"
+          "SmartSql": "4.1.53"
         },
         "compile": {
           "lib/netstandard2.0/SmartSql.DyRepository.dll": {}
@@ -104,11 +104,11 @@
           }
         }
       },
-      "SmartSql.ScriptTag/4.1.50": {
+      "SmartSql.ScriptTag/4.1.53": {
         "type": "package",
         "dependencies": {
           "Jint": "2.11.58",
-          "SmartSql": "4.1.50"
+          "SmartSql": "4.1.53"
         },
         "compile": {
           "lib/netstandard2.0/SmartSql.ScriptTag.dll": {}
@@ -117,11 +117,11 @@
           "lib/netstandard2.0/SmartSql.ScriptTag.dll": {}
         }
       },
-      "SmartSql.TypeHandler/4.1.50": {
+      "SmartSql.TypeHandler/4.1.53": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2",
-          "SmartSql": "4.1.50"
+          "SmartSql": "4.1.53"
         },
         "compile": {
           "lib/netstandard2.0/SmartSql.TypeHandler.dll": {}
@@ -483,29 +483,29 @@
         "newtonsoft.json.nuspec"
       ]
     },
-    "SmartSql/4.1.50": {
-      "sha512": "ymHjwqQRVPA/EIMct6cBrERXnVTDW38P2dzoDNAwISDDdsFE4x3kbwK0Vnv0ZTSRXXnd1xM7DfIUrVov/QG2mA==",
+    "SmartSql/4.1.53": {
+      "sha512": "+1a1v/GQd20WtD/wHLS/0CijnjAlUQdaOqT2BiqwfR3GI7xw5w8h6hRvwHUKPdH6o5z2kAjkHV80nITEe8SVhQ==",
       "type": "package",
-      "path": "smartsql/4.1.50",
+      "path": "smartsql/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.dll",
         "lib/netstandard2.0/SmartSql.pdb",
-        "smartsql.4.1.50.nupkg.sha512",
+        "smartsql.4.1.53.nupkg.sha512",
         "smartsql.nuspec"
       ]
     },
-    "SmartSql.DyRepository/4.1.50": {
-      "sha512": "tfQk/VYrQ4Uasqv5pvI+d0oBL4+h37JwX09LU6Gp90nlblqsvLcm7T5GxqoBXrtiBuSgqDB4h0msj406HLSrRQ==",
+    "SmartSql.DyRepository/4.1.53": {
+      "sha512": "387iKMPPTd9opPCi4ieHR2lu8rooKA1nwPly+3e0yXnSI3WwaFy9Z4FfH45HYllPm3BEzvvP22TgH/8+uBXFiw==",
       "type": "package",
-      "path": "smartsql.dyrepository/4.1.50",
+      "path": "smartsql.dyrepository/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.DyRepository.dll",
         "lib/netstandard2.0/SmartSql.DyRepository.pdb",
-        "smartsql.dyrepository.4.1.50.nupkg.sha512",
+        "smartsql.dyrepository.4.1.53.nupkg.sha512",
         "smartsql.dyrepository.nuspec"
       ]
     },
@@ -524,29 +524,29 @@
         "smartsql.schema.nuspec"
       ]
     },
-    "SmartSql.ScriptTag/4.1.50": {
-      "sha512": "sSru0JYTas2rhn/1BtSl3tfXZK719TTOzjy/G0vPm283Ph7M8xPzS5B9QZuHr1m7VTcNLhWsuzFsLQfU8IFdGg==",
+    "SmartSql.ScriptTag/4.1.53": {
+      "sha512": "FNfr7OzZmbZxdYydfxCHLMK93WZjJr/XwFmdPaiZmxOEHYj/63Fb5l9Hztapu9Ke2kwcr4+5nzB9p3z19AZDKw==",
       "type": "package",
-      "path": "smartsql.scripttag/4.1.50",
+      "path": "smartsql.scripttag/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.ScriptTag.dll",
         "lib/netstandard2.0/SmartSql.ScriptTag.pdb",
-        "smartsql.scripttag.4.1.50.nupkg.sha512",
+        "smartsql.scripttag.4.1.53.nupkg.sha512",
         "smartsql.scripttag.nuspec"
       ]
     },
-    "SmartSql.TypeHandler/4.1.50": {
-      "sha512": "VY7wE1CIwyD2JbvsuGpMWjcz/m310IPoZpz+u31K5cM7/AuQpXvaHd3hnd4xfCM0Muw2BKAcF35vo7lrrWt1bQ==",
+    "SmartSql.TypeHandler/4.1.53": {
+      "sha512": "Sf9whBxip+3kI7b6BahyVcyyPygxCeWMUAuKmtaDGaRm/J15aPZ6ELWh4yZ3cKNrSqOZPhZWSBOB1LaDjWuvFw==",
       "type": "package",
-      "path": "smartsql.typehandler/4.1.50",
+      "path": "smartsql.typehandler/4.1.53",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SmartSql.TypeHandler.dll",
         "lib/netstandard2.0/SmartSql.TypeHandler.pdb",
-        "smartsql.typehandler.4.1.50.nupkg.sha512",
+        "smartsql.typehandler.4.1.53.nupkg.sha512",
         "smartsql.typehandler.nuspec"
       ]
     },
@@ -1152,10 +1152,10 @@
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
       "Permission.Entity >= 1.0.0",
-      "SmartSql.DyRepository >= 4.1.50",
+      "SmartSql.DyRepository >= 4.1.53",
       "SmartSql.Schema >= 4.1.30",
-      "SmartSql.ScriptTag >= 4.1.50",
-      "SmartSql.TypeHandler >= 4.1.50"
+      "SmartSql.ScriptTag >= 4.1.53",
+      "SmartSql.TypeHandler >= 4.1.53"
     ]
   },
   "packageFolders": {
@@ -1165,11 +1165,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj",
+      "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj",
       "projectName": "Permission.Repository",
-      "projectPath": "D:\\workspace\\permission\\src\\Permission.Repository\\Permission.Repository.csproj",
+      "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj",
       "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-      "outputPath": "D:\\workspace\\permission\\src\\Permission.Repository\\obj\\",
+      "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1188,8 +1188,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj": {
-              "projectPath": "D:\\workspace\\permission\\src\\Permission.Entity\\Permission.Entity.csproj"
+            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
+              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
             }
           }
         }
@@ -1211,7 +1211,7 @@
           },
           "SmartSql.DyRepository": {
             "target": "Package",
-            "version": "[4.1.50, )"
+            "version": "[4.1.53, )"
           },
           "SmartSql.Schema": {
             "target": "Package",
@@ -1219,11 +1219,11 @@
           },
           "SmartSql.ScriptTag": {
             "target": "Package",
-            "version": "[4.1.50, )"
+            "version": "[4.1.53, )"
           },
           "SmartSql.TypeHandler": {
             "target": "Package",
-            "version": "[4.1.50, )"
+            "version": "[4.1.53, )"
           }
         },
         "imports": [
