@@ -1,51 +1,73 @@
 using System.Collections.Generic;
 using Common.Message;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Permission.Api.Model;
 using Permission.Entity;
 
 namespace Permission.Api.Controllers
 {
 
     /// <summary>
-    /// 用户信息
+    /// 帐号信息
     /// </summary>
     [ApiController]
-    [Route("/api/permission/user/")]
-    public class SysUserControler : BaseController
+    [Route("/api/permission/account/")]
+    public class SysUserAccountControler : BaseController
     {
 
+
         /// <summary>
-        /// 新增用户
+        /// 登录
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>登录令牌</returns>
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public RestResponse Login([FromBody] LoginModel login)
+        {
+            //验证 验证码
+
+            //验证 用户名、密码
+
+            //生成token
+            return RestResponse.success().put("token", "");
+        }
+
+
+        /// <summary>
+        /// 新增帐号
         /// </summary>
         /// <param name="sysUser">用户信息</param>
         /// <returns></returns>
         [HttpPost("add")]
-        public RestResponse Insert([FromBody] SysUser sysUser)
+        public RestResponse Insert([FromBody] SysUserAccount sysUser)
         {
+            //可以此自己处理帐号与用户信息关联
             return RestResponse.success();
         }
 
 
         /// <summary>
-        /// 获取用户信息
+        /// 获取帐号信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("{id}")]
         public RestResponse Get(string id)
         {
-            SysUser sysUser = new SysUser();
+            SysUserAccount sysUser = new SysUserAccount();
             return RestResponse.success().put("model", sysUser);
         }
 
 
         /// <summary>
-        /// 修改用户信息
+        /// 修改帐号信息
         /// </summary>
         /// <param name="sysUser"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        public RestResponse Update([FromBody] SysUser sysUser)
+        public RestResponse Update([FromBody] SysUserAccount sysUser)
         {
             int flag = 0;
             return flag > 0 ? RestResponse.success() : RestResponse.error("操作失败");
@@ -53,7 +75,7 @@ namespace Permission.Api.Controllers
 
 
         /// <summary>
-        /// 删除用户信息
+        /// 删除帐号信息
         /// </summary>
         /// <param name="id"></param>
         [HttpDelete("{id}")]
@@ -65,14 +87,14 @@ namespace Permission.Api.Controllers
 
 
         /// <summary>
-        /// 用户列表
+        /// 帐号列表
         /// </summary>
         /// <param name="page"></param>
         /// <param name="limit"></param>
         [HttpGet("list/{page}/{limit}")]
         public RestResponse QueryList(int page = 1, int limit = 10)
         {
-            IList<SysUser> sysUserList = new List<SysUser>();
+            IList<SysUserAccount> sysUserList = new List<SysUserAccount>();
             return RestResponse.success().put("page", sysUserList);
         }
 

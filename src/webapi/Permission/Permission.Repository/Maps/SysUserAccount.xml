@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+//*******************************
+// Create By cnzhang
+// Date 2020-04-14 15:32
+// Code Generate By SmartCode
+// Code Generate Github : https://github.com/Ahoo-Wang/SmartCode
+//*******************************-->
+
+<SmartSqlMap Scope="SysUserAccount" xmlns="http://SmartSql.net/schemas/SmartSqlMap.xsd">
+
+    <ResultMaps>
+        <ResultMap Id="SysUserAccountResultMap">
+                <Result Column="ID" Property="Id" />
+                <Result Column="LOGIN_ACCOUNT" Property="LoginAccount" />
+                <Result Column="PASSWORD" Property="Password" />
+                <Result Column="SALT" Property="Salt" />
+                <Result Column="CREATE_TIME" Property="CreateTime" />
+                <Result Column="UPDATE_TIME" Property="UpdateTime" />
+        </ResultMap>
+    </ResultMaps>
+    <Statements>
+
+<Statement Id="AllCols">
+T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>        <Statement Id="QueryParams">
+            <Where>
+                    <IsNotEmpty Prepend="And" Property="Id">
+                        T.ID = @Id
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="LoginAccount">
+                        T.LOGIN_ACCOUNT = @LoginAccount
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Password">
+                        T.PASSWORD = @Password
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Salt">
+                        T.SALT = @Salt
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="CreateTime">
+                        T.CREATE_TIME = @CreateTime
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="UpdateTime">
+                        T.UPDATE_TIME = @UpdateTime
+                    </IsNotEmpty>
+            </Where>
+        </Statement>
+
+
+<!--新增-->
+<Statement Id="Insert">
+    INSERT INTO sys_user_account
+    (
+      ID,
+      LOGIN_ACCOUNT,
+      PASSWORD,
+      SALT,
+      CREATE_TIME,
+      UPDATE_TIME
+    )
+    VALUES
+    (
+      @Id,
+      @LoginAccount,
+      @Password,
+      @Salt,
+      @CreateTime,
+      @UpdateTime
+    )
+</Statement>
+
+<!--删除-->
+<Statement Id="Delete">
+    Delete From sys_user_account
+    Where ID=@Id
+</Statement>
+
+<!--更新-->
+<Statement Id="Update">
+    UPDATE sys_user_account
+    <Set>
+                <IsProperty Prepend="," Property="LoginAccount">
+                    LOGIN_ACCOUNT = @LoginAccount
+                </IsProperty>
+                <IsProperty Prepend="," Property="Password">
+                    PASSWORD = @Password
+                </IsProperty>
+                <IsProperty Prepend="," Property="Salt">
+                    SALT = @Salt
+                </IsProperty>
+                <IsProperty Prepend="," Property="CreateTime">
+                    CREATE_TIME = @CreateTime
+                </IsProperty>
+                <IsProperty Prepend="," Property="UpdateTime">
+                    UPDATE_TIME = @UpdateTime
+                </IsProperty>
+    </Set>
+    Where ID=@Id
+</Statement>
+
+    <!--获取数据列-->
+    <Statement Id="Query" ResultMap="SysUserAccountResultMap">
+        SELECT
+        <IsNotEmpty Prepend="Top" Property="Taken">
+            (@Taken)
+        </IsNotEmpty>
+        <Include RefId="AllCols"/>
+        From sys_user_account T
+        <Include RefId="QueryParams"/>
+        <Switch Prepend="Order By" Property="OrderBy">
+            <Default>
+                T.ID Desc
+            </Default>
+        </Switch>
+    </Statement>
+
+
+    <!--获取分页数据-->
+    <Statement Id="QueryByPage" ResultMap="SysUserAccountResultMap">
+
+                Select 
+                <Include RefId="AllCols"/>
+                From sys_user_account T With(NoLock)
+                <Include RefId="QueryParams"/>
+                Order By T.ID Desc
+                Offset ((@PageIndex-1)*@PageSize) Rows Fetch Next @PageSize Rows Only;
+                </Statement>
+
+
+<!--获取记录数-->
+<Statement Id="GetRecord">
+    Select Count(1) From sys_user_account T
+    <Include RefId="QueryParams" />
+</Statement>
+
+    <!--获取表映射实体-->
+    <Statement Id="GetEntity" ResultMap="SysUserAccountResultMap">
+        Select Top 1 
+        <Include RefId="AllCols"/>
+        From sys_user_account T With(NoLock)
+        <Where Min="1">
+                <IsNotEmpty Prepend="And" Property="Id">
+                    T.ID= @Id
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="LoginAccount">
+                    T.LOGIN_ACCOUNT= @LoginAccount
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Password">
+                    T.PASSWORD= @Password
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Salt">
+                    T.SALT= @Salt
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="CreateTime">
+                    T.CREATE_TIME= @CreateTime
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="UpdateTime">
+                    T.UPDATE_TIME= @UpdateTime
+                </IsNotEmpty>
+        </Where>
+    </Statement>
+
+
+<!--是否存在该记录-->
+<Statement Id="IsExist">
+    Select Count(1) From sys_user_account T
+    <Include RefId="QueryParams" />
+</Statement>
+
+
+    </Statements>
+</SmartSqlMap>

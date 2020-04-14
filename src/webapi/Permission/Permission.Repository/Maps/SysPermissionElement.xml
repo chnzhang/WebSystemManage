@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+//*******************************
+// Create By cnzhang
+// Date 2020-04-14 15:32
+// Code Generate By SmartCode
+// Code Generate Github : https://github.com/Ahoo-Wang/SmartCode
+//*******************************-->
+
+<SmartSqlMap Scope="SysPermissionElement" xmlns="http://SmartSql.net/schemas/SmartSqlMap.xsd">
+
+    <ResultMaps>
+        <ResultMap Id="SysPermissionElementResultMap">
+                <Result Column="ID" Property="Id" />
+        </ResultMap>
+    </ResultMaps>
+    <Statements>
+
+<Statement Id="AllCols">
+T.ID</Statement>        <Statement Id="QueryParams">
+            <Where>
+                    <IsNotEmpty Prepend="And" Property="Id">
+                        T.ID = @Id
+                    </IsNotEmpty>
+            </Where>
+        </Statement>
+
+
+<!--新增-->
+<Statement Id="Insert">
+    INSERT INTO sys_permission_element
+    (
+      ID
+    )
+    VALUES
+    (
+      @Id
+    )
+</Statement>
+
+<!--删除-->
+<Statement Id="Delete">
+    Delete From sys_permission_element
+    Where ID=@Id
+</Statement>
+
+<!--更新-->
+<Statement Id="Update">
+    UPDATE sys_permission_element
+    <Set>
+    </Set>
+    Where ID=@Id
+</Statement>
+
+    <!--获取数据列-->
+    <Statement Id="Query" ResultMap="SysPermissionElementResultMap">
+        SELECT
+        <IsNotEmpty Prepend="Top" Property="Taken">
+            (@Taken)
+        </IsNotEmpty>
+        <Include RefId="AllCols"/>
+        From sys_permission_element T
+        <Include RefId="QueryParams"/>
+        <Switch Prepend="Order By" Property="OrderBy">
+            <Default>
+                T.ID Desc
+            </Default>
+        </Switch>
+    </Statement>
+
+
+    <!--获取分页数据-->
+    <Statement Id="QueryByPage" ResultMap="SysPermissionElementResultMap">
+
+                Select 
+                <Include RefId="AllCols"/>
+                From sys_permission_element T With(NoLock)
+                <Include RefId="QueryParams"/>
+                Order By T.ID Desc
+                Offset ((@PageIndex-1)*@PageSize) Rows Fetch Next @PageSize Rows Only;
+                </Statement>
+
+
+<!--获取记录数-->
+<Statement Id="GetRecord">
+    Select Count(1) From sys_permission_element T
+    <Include RefId="QueryParams" />
+</Statement>
+
+    <!--获取表映射实体-->
+    <Statement Id="GetEntity" ResultMap="SysPermissionElementResultMap">
+        Select Top 1 
+        <Include RefId="AllCols"/>
+        From sys_permission_element T With(NoLock)
+        <Where Min="1">
+                <IsNotEmpty Prepend="And" Property="Id">
+                    T.ID= @Id
+                </IsNotEmpty>
+        </Where>
+    </Statement>
+
+
+<!--是否存在该记录-->
+<Statement Id="IsExist">
+    Select Count(1) From sys_permission_element T
+    <Include RefId="QueryParams" />
+</Statement>
+
+
+    </Statements>
+</SmartSqlMap>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+//*******************************
+// Create By cnzhang
+// Date 2020-04-14 15:32
+// Code Generate By SmartCode
+// Code Generate Github : https://github.com/Ahoo-Wang/SmartCode
+//*******************************-->
+
+<SmartSqlMap Scope="SysRole" xmlns="http://SmartSql.net/schemas/SmartSqlMap.xsd">
+
+    <ResultMaps>
+        <ResultMap Id="SysRoleResultMap">
+                <Result Column="ID" Property="Id" />
+                <Result Column="NAME" Property="Name" />
+                <Result Column="REMARK" Property="Remark" />
+                <Result Column="CREATE_USER_ID" Property="CreateUserId" />
+                <Result Column="CREATE_USER_ORG_NO" Property="CreateUserOrgNo" />
+                <Result Column="CREATE_TIME" Property="CreateTime" />
+        </ResultMap>
+    </ResultMaps>
+    <Statements>
+
+<Statement Id="AllCols">
+T.ID,T.NAME,T.REMARK,T.CREATE_USER_ID,T.CREATE_USER_ORG_NO,T.CREATE_TIME</Statement>        <Statement Id="QueryParams">
+            <Where>
+                    <IsNotEmpty Prepend="And" Property="Id">
+                        T.ID = @Id
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Name">
+                        T.NAME = @Name
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Remark">
+                        T.REMARK = @Remark
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="CreateUserId">
+                        T.CREATE_USER_ID = @CreateUserId
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="CreateUserOrgNo">
+                        T.CREATE_USER_ORG_NO = @CreateUserOrgNo
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="CreateTime">
+                        T.CREATE_TIME = @CreateTime
+                    </IsNotEmpty>
+            </Where>
+        </Statement>
+
+
+<!--新增-->
+<Statement Id="Insert">
+    INSERT INTO sys_role
+    (
+      ID,
+      NAME,
+      REMARK,
+      CREATE_USER_ID,
+      CREATE_USER_ORG_NO,
+      CREATE_TIME
+    )
+    VALUES
+    (
+      @Id,
+      @Name,
+      @Remark,
+      @CreateUserId,
+      @CreateUserOrgNo,
+      @CreateTime
+    )
+</Statement>
+
+<!--删除-->
+<Statement Id="Delete">
+    Delete From sys_role
+    Where ID=@Id
+</Statement>
+
+<!--更新-->
+<Statement Id="Update">
+    UPDATE sys_role
+    <Set>
+                <IsProperty Prepend="," Property="Name">
+                    NAME = @Name
+                </IsProperty>
+                <IsProperty Prepend="," Property="Remark">
+                    REMARK = @Remark
+                </IsProperty>
+                <IsProperty Prepend="," Property="CreateUserId">
+                    CREATE_USER_ID = @CreateUserId
+                </IsProperty>
+                <IsProperty Prepend="," Property="CreateUserOrgNo">
+                    CREATE_USER_ORG_NO = @CreateUserOrgNo
+                </IsProperty>
+                <IsProperty Prepend="," Property="CreateTime">
+                    CREATE_TIME = @CreateTime
+                </IsProperty>
+    </Set>
+    Where ID=@Id
+</Statement>
+
+    <!--获取数据列-->
+    <Statement Id="Query" ResultMap="SysRoleResultMap">
+        SELECT
+        <IsNotEmpty Prepend="Top" Property="Taken">
+            (@Taken)
+        </IsNotEmpty>
+        <Include RefId="AllCols"/>
+        From sys_role T
+        <Include RefId="QueryParams"/>
+        <Switch Prepend="Order By" Property="OrderBy">
+            <Default>
+                T.ID Desc
+            </Default>
+        </Switch>
+    </Statement>
+
+
+    <!--获取分页数据-->
+    <Statement Id="QueryByPage" ResultMap="SysRoleResultMap">
+
+                Select 
+                <Include RefId="AllCols"/>
+                From sys_role T With(NoLock)
+                <Include RefId="QueryParams"/>
+                Order By T.ID Desc
+                Offset ((@PageIndex-1)*@PageSize) Rows Fetch Next @PageSize Rows Only;
+                </Statement>
+
+
+<!--获取记录数-->
+<Statement Id="GetRecord">
+    Select Count(1) From sys_role T
+    <Include RefId="QueryParams" />
+</Statement>
+
+    <!--获取表映射实体-->
+    <Statement Id="GetEntity" ResultMap="SysRoleResultMap">
+        Select Top 1 
+        <Include RefId="AllCols"/>
+        From sys_role T With(NoLock)
+        <Where Min="1">
+                <IsNotEmpty Prepend="And" Property="Id">
+                    T.ID= @Id
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Name">
+                    T.NAME= @Name
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Remark">
+                    T.REMARK= @Remark
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="CreateUserId">
+                    T.CREATE_USER_ID= @CreateUserId
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="CreateUserOrgNo">
+                    T.CREATE_USER_ORG_NO= @CreateUserOrgNo
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="CreateTime">
+                    T.CREATE_TIME= @CreateTime
+                </IsNotEmpty>
+        </Where>
+    </Statement>
+
+
+<!--是否存在该记录-->
+<Statement Id="IsExist">
+    Select Count(1) From sys_role T
+    <Include RefId="QueryParams" />
+</Statement>
+
+
+    </Statements>
+</SmartSqlMap>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+//*******************************
+// Create By cnzhang
+// Date 2020-04-14 15:33
+// Code Generate By SmartCode
+// Code Generate Github : https://github.com/Ahoo-Wang/SmartCode
+//*******************************-->
+
+<SmartSqlMap Scope="SysUserToken" xmlns="http://SmartSql.net/schemas/SmartSqlMap.xsd">
+
+    <ResultMaps>
+        <ResultMap Id="SysUserTokenResultMap">
+                <Result Column="ID" Property="Id" />
+                <Result Column="SYS_USER_ACCOUNT_ID" Property="SysUserAccountId" />
+                <Result Column="TOKEN" Property="Token" />
+                <Result Column="EXPIRE_TIME" Property="ExpireTime" />
+                <Result Column="UPDATE_TIME" Property="UpdateTime" />
+        </ResultMap>
+    </ResultMaps>
+    <Statements>
+
+<Statement Id="AllCols">
+T.ID,T.SYS_USER_ACCOUNT_ID,T.TOKEN,T.EXPIRE_TIME,T.UPDATE_TIME</Statement>        <Statement Id="QueryParams">
+            <Where>
+                    <IsNotEmpty Prepend="And" Property="Id">
+                        T.ID = @Id
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="SysUserAccountId">
+                        T.SYS_USER_ACCOUNT_ID = @SysUserAccountId
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Token">
+                        T.TOKEN = @Token
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="ExpireTime">
+                        T.EXPIRE_TIME = @ExpireTime
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="UpdateTime">
+                        T.UPDATE_TIME = @UpdateTime
+                    </IsNotEmpty>
+            </Where>
+        </Statement>
+
+
+<!--新增-->
+<Statement Id="Insert">
+    INSERT INTO sys_user_token
+    (
+      ID,
+      SYS_USER_ACCOUNT_ID,
+      TOKEN,
+      EXPIRE_TIME,
+      UPDATE_TIME
+    )
+    VALUES
+    (
+      @Id,
+      @SysUserAccountId,
+      @Token,
+      @ExpireTime,
+      @UpdateTime
+    )
+</Statement>
+
+<!--删除-->
+<Statement Id="Delete">
+    Delete From sys_user_token
+    Where ID=@Id
+</Statement>
+
+<!--更新-->
+<Statement Id="Update">
+    UPDATE sys_user_token
+    <Set>
+                <IsProperty Prepend="," Property="SysUserAccountId">
+                    SYS_USER_ACCOUNT_ID = @SysUserAccountId
+                </IsProperty>
+                <IsProperty Prepend="," Property="Token">
+                    TOKEN = @Token
+                </IsProperty>
+                <IsProperty Prepend="," Property="ExpireTime">
+                    EXPIRE_TIME = @ExpireTime
+                </IsProperty>
+                <IsProperty Prepend="," Property="UpdateTime">
+                    UPDATE_TIME = @UpdateTime
+                </IsProperty>
+    </Set>
+    Where ID=@Id
+</Statement>
+
+    <!--获取数据列-->
+    <Statement Id="Query" ResultMap="SysUserTokenResultMap">
+        SELECT
+        <IsNotEmpty Prepend="Top" Property="Taken">
+            (@Taken)
+        </IsNotEmpty>
+        <Include RefId="AllCols"/>
+        From sys_user_token T
+        <Include RefId="QueryParams"/>
+        <Switch Prepend="Order By" Property="OrderBy">
+            <Default>
+                T.ID Desc
+            </Default>
+        </Switch>
+    </Statement>
+
+
+    <!--获取分页数据-->
+    <Statement Id="QueryByPage" ResultMap="SysUserTokenResultMap">
+
+                Select 
+                <Include RefId="AllCols"/>
+                From sys_user_token T With(NoLock)
+                <Include RefId="QueryParams"/>
+                Order By T.ID Desc
+                Offset ((@PageIndex-1)*@PageSize) Rows Fetch Next @PageSize Rows Only;
+                </Statement>
+
+
+<!--获取记录数-->
+<Statement Id="GetRecord">
+    Select Count(1) From sys_user_token T
+    <Include RefId="QueryParams" />
+</Statement>
+
+    <!--获取表映射实体-->
+    <Statement Id="GetEntity" ResultMap="SysUserTokenResultMap">
+        Select Top 1 
+        <Include RefId="AllCols"/>
+        From sys_user_token T With(NoLock)
+        <Where Min="1">
+                <IsNotEmpty Prepend="And" Property="Id">
+                    T.ID= @Id
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="SysUserAccountId">
+                    T.SYS_USER_ACCOUNT_ID= @SysUserAccountId
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Token">
+                    T.TOKEN= @Token
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="ExpireTime">
+                    T.EXPIRE_TIME= @ExpireTime
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="UpdateTime">
+                    T.UPDATE_TIME= @UpdateTime
+                </IsNotEmpty>
+        </Where>
+    </Statement>
+
+
+<!--是否存在该记录-->
+<Statement Id="IsExist">
+    Select Count(1) From sys_user_token T
+    <Include RefId="QueryParams" />
+</Statement>
+
+
+    </Statements>
+</SmartSqlMap>
