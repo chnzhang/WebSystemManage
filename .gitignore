@@ -9,3 +9,6 @@ src/webapi/Permission/Permission.Repository/bin/*
 src/webapi/Permission/Permission.Repository/obj/*
 src/webapi/Permission/Permission.Service/bin/*
 src/webapi/Permission/Permission.Service/obj/*
+src/webapi/Common/Common/bin/*
+src/webapi/Common/Common/obj/*
+

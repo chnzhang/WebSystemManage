@@ -3651,11 +3651,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj",
-      "projectName": "Permission.Api",
-      "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj",
+      "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj",
+      "projectName": "permission.api",
+      "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj",
       "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\obj\\",
+      "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3674,14 +3674,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj"
+            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
+              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
             },
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj"
+            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
+              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj"
             },
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj"
+            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj": {
+              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj"
             }
           }
         }
