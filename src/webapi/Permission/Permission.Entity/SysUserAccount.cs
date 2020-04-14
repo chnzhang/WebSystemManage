@@ -6,18 +6,17 @@
 //*******************************
 
 using System;
+using Common;
+
 namespace Permission.Entity
 {
 
     ///<summary>
     /// Table, sys_user_account
     ///</summary>
-    public class SysUserAccount
+    public class SysUserAccount:BaseEntity
     {
-        ///<summary>
-        /// ID, varchar
-        ///</summary>
-        public virtual string Id { get; set; }
+      
         ///<summary>
         /// LOGIN_ACCOUNT, varchar
         ///</summary>
@@ -30,10 +29,7 @@ namespace Permission.Entity
         /// SALT, varchar
         ///</summary>
         public virtual string Salt { get; set; }
-        ///<summary>
-        /// CREATE_TIME, datetime
-        ///</summary>
-        public virtual DateTime CreateTime { get; set; }
+      
         ///<summary>
         /// UPDATE_TIME, datetime
         ///</summary>

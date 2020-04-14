@@ -14,28 +14,13 @@ namespace Permission.Service
     ///<summary>
     /// Table, sys_user_account
     ///</summary>
-    public class SysUserAccountService
+    public class SysUserAccountService : BaseService<ISysUserAccountRepository, SysUserAccount>
     {
         public ISysUserAccountRepository SysUserAccountRepository { get; }
 
-        public SysUserAccountService(ISysUserAccountRepository sysUserAccountRepository)
+        public SysUserAccountService(ISysUserAccountRepository sysUserAccountRepository) : base(sysUserAccountRepository)
         {
             SysUserAccountRepository = sysUserAccountRepository;
-        }
-
-        public int Insert(SysUserAccount sysUserAccount)
-        {
-            return SysUserAccountRepository.Insert(sysUserAccount);
-        }
-
-        public int DeleteById(string id)
-        {
-            return SysUserAccountRepository.DeleteById(id);
-        }
-
-        public int Update(SysUserAccount sysUserAccount)
-        {
-            return SysUserAccountRepository.Update(sysUserAccount);
         }
 
     }

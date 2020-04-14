@@ -442,7 +442,7 @@
           }
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -1012,9 +1012,25 @@
           "lib/netstandard1.3/TinyMapper.dll": {}
         }
       },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
       "Permission.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Common": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Permission.Entity.dll": {}
         },
@@ -1043,6 +1059,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Common": "1.0.0",
           "Permission.Entity": "1.0.0",
           "Permission.Repository": "1.0.0",
           "SmartSql.AOP": "4.1.53"
@@ -1668,10 +1685,10 @@
         "version.txt"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1694,7 +1711,7 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
@@ -3616,6 +3633,11 @@
         "tinymapper.nuspec"
       ]
     },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Common/Common.csproj",
+      "msbuildProject": "../../Common/Common/Common.csproj"
+    },
     "Permission.Entity/1.0.0": {
       "type": "project",
       "path": "../Permission.Entity/Permission.Entity.csproj",
@@ -3635,6 +3657,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AspectCore.Extensions.Hosting >= 2.1.0",
+      "Common >= 1.0.0",
       "NLog.Web.AspNetCore >= 4.9.1",
       "Permission.Entity >= 1.0.0",
       "Permission.Repository >= 1.0.0",
@@ -3651,11 +3674,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj",
-      "projectName": "permission.api",
-      "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj",
+      "projectUniqueName": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj",
+      "projectName": "Permission.Api",
+      "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj",
       "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\obj\\",
+      "outputPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3674,14 +3697,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
+            "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
+              "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj"
             },
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj"
+            "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
+              "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj"
             },
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj"
+            "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj": {
+              "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj"
+            },
+            "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj": {
+              "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj"
             }
           }
         }

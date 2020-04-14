@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Permission.Api.Model;
 using Permission.Entity;
+using Permission.Service;
 
 namespace Permission.Api.Controllers
 {
@@ -15,7 +16,11 @@ namespace Permission.Api.Controllers
     [Route("/api/permission/account/")]
     public class SysUserAccountControler : BaseController
     {
-
+        private SysUserAccountService sysUserAccountService { get; }
+        public SysUserAccountControler(SysUserAccountService _sysUserAccountService)
+        {
+            sysUserAccountService = _sysUserAccountService;
+        }
 
         /// <summary>
         /// 登录
@@ -29,8 +34,24 @@ namespace Permission.Api.Controllers
             //验证 验证码
 
             //验证 用户名、密码
+            SysUserAccount account = sysUserAccountService.GetEntity(new
+            {
+                Account = login.Account
+            });
+
+            if (account == null)
+            {
+                return RestResponse.error("帐号错误");
+            }
+
+            string password = Common.EncryptionDecryption.Md5Unit.MD532(login.Password + account.Salt);
+            if (!password.Equals(account.Password))
+            {
+                return RestResponse.error("密码错误");
+            }
 
             //生成token
+            
             return RestResponse.success().put("token", "");
         }
 

@@ -161,7 +161,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -406,9 +406,25 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
       "Permission.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Common": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Permission.Entity.dll": {}
         },
@@ -798,10 +814,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -824,7 +840,7 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
@@ -1579,6 +1595,11 @@
         "version.txt"
       ]
     },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Common/Common.csproj",
+      "msbuildProject": "../../Common/Common/Common.csproj"
+    },
     "Permission.Entity/1.0.0": {
       "type": "project",
       "path": "../Permission.Entity/Permission.Entity.csproj",
@@ -1592,6 +1613,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Common >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
       "Permission.Entity >= 1.0.0",
       "Permission.Repository >= 1.0.0",
@@ -1605,11 +1627,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj",
+      "projectUniqueName": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj",
       "projectName": "Permission.Service",
-      "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj",
+      "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj",
       "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\obj\\",
+      "outputPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1628,11 +1650,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
+            "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
+              "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj"
             },
-            "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
-              "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj"
+            "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
+              "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj"
+            },
+            "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj": {
+              "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj"
             }
           }
         }
