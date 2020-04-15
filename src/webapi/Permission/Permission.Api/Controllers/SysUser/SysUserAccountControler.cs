@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using Common;
 using Common.Message;
+using Hei.Captcha;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Permission.Api.Model;
@@ -16,10 +19,13 @@ namespace Permission.Api.Controllers
     [Route("/api/permission/account/")]
     public class SysUserAccountControler : BaseController
     {
-        private SysUserAccountService sysUserAccountService { get; }
-        public SysUserAccountControler(SysUserAccountService _sysUserAccountService)
+        private readonly SysUserAccountService sysUserAccountService;
+        private readonly SysUserTokenService sysUserTokenService;
+
+        public SysUserAccountControler(SysUserAccountService _sysUserAccountService, SysUserTokenService _sysUserTokenService)
         {
             sysUserAccountService = _sysUserAccountService;
+            sysUserTokenService = _sysUserTokenService;
         }
 
         /// <summary>
@@ -32,27 +38,54 @@ namespace Permission.Api.Controllers
         public RestResponse Login([FromBody] LoginModel login)
         {
             //验证 验证码
+            HttpContext.Session.TryGetValue("captcha", out var captch);
+            if (captch == null)
+            {
+                return RestResponse.error("验证码错误,请刷新验证码重试");
+            }
+            string Captcha = System.Text.Encoding.Default.GetString(captch);
+            if (string.IsNullOrEmpty(Captcha) || !login.Code.Equals(Captcha))
+            {
+                return RestResponse.error("验证码错误");
+            }
 
             //验证 用户名、密码
             SysUserAccount account = sysUserAccountService.GetEntity(new
             {
-                Account = login.Account
+                LoginAccount = login.Account
             });
 
             if (account == null)
             {
-                return RestResponse.error("帐号错误");
+                return RestResponse.error("帐号/密码错误");
             }
 
             string password = Common.EncryptionDecryption.Md5Unit.MD532(login.Password + account.Salt);
             if (!password.Equals(account.Password))
             {
-                return RestResponse.error("密码错误");
+                return RestResponse.error("帐号/密码错误");
             }
 
             //生成token
-            
-            return RestResponse.success().put("token", "");
+            string token = TokenGenerator.generateValue();
+
+            SysUserToken userToken = sysUserTokenService.GetEntity(new
+            {
+                SysUserAccountId = account.Id
+            });
+
+            userToken = userToken == null ? new SysUserToken() : userToken;
+            userToken.SysUserAccountId = account.Id;
+            userToken.Token = token;
+            //查询配置 令牌时效
+            double h = Convert.ToDouble(Startup.Configuration["Token:TimeHourExpire"]);
+            userToken.ExpireTime = DateTime.Now.AddHours(h);
+            userToken.UpdateTime = DateTime.Now;
+
+            int flag = string.IsNullOrEmpty(userToken.Id) ? sysUserTokenService.Insert(userToken) : sysUserTokenService.Update(userToken);
+
+
+            return RestResponse.success().put("token", token);
         }
 
 
@@ -64,8 +97,19 @@ namespace Permission.Api.Controllers
         [HttpPost("add")]
         public RestResponse Insert([FromBody] SysUserAccount sysUser)
         {
-            //可以此自己处理帐号与用户信息关联
-            return RestResponse.success();
+            //验证帐号是否可用
+            SysUserAccount sysUserAccount = sysUserAccountService.GetEntity(new { LoginAccount = sysUser.LoginAccount });
+            if (sysUserAccount != null)
+            {
+                return RestResponse.error("用户名已存在");
+            }
+            //可以此自己处理帐号与用户信息关联           
+            sysUser.Salt = Guid.NewGuid().ToString("N");
+            sysUser.Password = Common.EncryptionDecryption.Md5Unit.MD532(sysUser.Password + sysUser.Salt);
+            sysUser.UpdateTime = DateTime.Now;
+
+            int flag = sysUserAccountService.Insert(sysUser);
+            return flag > 0 ? RestResponse.success() : RestResponse.error("操作失败");
         }
 
 

@@ -25,7 +25,7 @@ namespace Permission.Api.Model
         /// 验证码
         /// </summary>
         [Required(ErrorMessage = "验证码不能为空")]
-        [MinLength(4, ErrorMessage = "验证码错误")]
+        [MinLength(2, ErrorMessage = "验证码错误")]
         public string Code { get; set; }
 
     }

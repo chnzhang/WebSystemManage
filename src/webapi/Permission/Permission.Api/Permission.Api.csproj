@@ -5,10 +5,12 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AspectCore.Extensions.Hosting" Version="2.1.0" />
+    <PackageReference Include="Hei.Captcha" Version="0.2.0" />
     <PackageReference Include="SmartSql.DIExtension" Version="4.1.53" />
     <PackageReference Include="SmartSql.TypeHandler" Version="4.1.53" />
     <PackageReference Include="TinyMapper" Version="3.0.3" /> 
-    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.1" />     
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.1" />    
+   
 </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Permission.Entity\Permission.Entity.csproj" />

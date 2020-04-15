@@ -14,28 +14,13 @@ namespace Permission.Service
     ///<summary>
     /// Table, sys_user_token
     ///</summary>
-    public class SysUserTokenService
+    public class SysUserTokenService:BaseService<ISysUserTokenRepository,SysUserToken>
     {
         public ISysUserTokenRepository SysUserTokenRepository { get; }
 
-        public SysUserTokenService(ISysUserTokenRepository sysUserTokenRepository)
+        public SysUserTokenService(ISysUserTokenRepository sysUserTokenRepository):base(sysUserTokenRepository)
         {
             SysUserTokenRepository = sysUserTokenRepository;
-        }
-
-        public int Insert(SysUserToken sysUserToken)
-        {
-            return SysUserTokenRepository.Insert(sysUserToken);
-        }
-
-        public int DeleteById(string id)
-        {
-            return SysUserTokenRepository.DeleteById(id);
-        }
-
-        public int Update(SysUserToken sysUserToken)
-        {
-            return SysUserTokenRepository.Update(sysUserToken);
         }
 
     }

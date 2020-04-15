@@ -4,7 +4,7 @@ namespace Common
 {
     public class BaseEntity
     {       
-        public string Id { get; set; }
-        public DateTime CreateTime { get; set; }
+        public virtual string Id { get; set; }
+        public virtual DateTime? CreateTime { get; set; }
     }
 }

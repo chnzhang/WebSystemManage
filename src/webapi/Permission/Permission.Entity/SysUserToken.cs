@@ -6,18 +6,17 @@
 //*******************************
 
 using System;
+using Common;
+
 namespace Permission.Entity
 {
 
     ///<summary>
     /// Table, sys_user_token
     ///</summary>
-    public class SysUserToken
+    public class SysUserToken:BaseEntity
     {
-        ///<summary>
-        /// ID, varchar
-        ///</summary>
-        public virtual string Id { get; set; }
+
         ///<summary>
         /// 账号id
         ///</summary>

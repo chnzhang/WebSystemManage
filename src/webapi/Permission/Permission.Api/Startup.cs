@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
+using Hei.Captcha;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +26,7 @@ namespace Permission.Api
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public static IConfiguration Configuration { get;set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,7 +34,49 @@ namespace Permission.Api
             services.AddControllers();
 
             RegisterRepository(services);
-            RegisterService(services);           
+            RegisterService(services);
+
+            //验证码
+            services.AddHeiCaptcha();
+
+
+            //参数验证
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = (context) =>
+                {
+                    StringBuilder errStr = new StringBuilder();
+
+                    var erroList = context.ModelState.ToList();
+                    if (erroList.Any())
+                    {
+                        errStr.AppendFormat("{0}", erroList.LastOrDefault().Value.Errors.FirstOrDefault().ErrorMessage);
+                        // foreach (var item in erroList)
+                        // {
+                        //     // errStr.AppendFormat("{0}:{1} |", item.Key, item.Value.Errors.FirstOrDefault().ErrorMessage);
+                        //     errStr.AppendFormat("{0}|", item.Value.Errors.FirstOrDefault().ErrorMessage);                            
+                        // }
+                    }
+                    var resp = Common.Message.RestResponse.error(Common.Message.HttpStatus.INTERNAL_SERVER_ERROR, errStr.ToString().TrimEnd('|'));
+                    return new JsonResult(resp);
+                };
+            });
+
+
+
+
+
+            //获取ip地址
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //开启Session
+            services.AddDistributedMemoryCache().AddSession();
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => false;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
         }
 
         private void RegisterRepository(IServiceCollection services)
@@ -62,6 +107,10 @@ namespace Permission.Api
 
             // app.UseHttpsRedirection();
 
+
+            app.UseSession();
+            app.UseCookiePolicy();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -70,7 +119,8 @@ namespace Permission.Api
             {
                 endpoints.MapControllers();
             });
-            app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto });
+
+
         }
     }
 }

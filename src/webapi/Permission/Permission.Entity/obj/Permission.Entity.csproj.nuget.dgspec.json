@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {}
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {}
   },
   "projects": {
-    "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -66,14 +66,14 @@
         }
       }
     },
-    "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj",
         "projectName": "Permission.Entity",
-        "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -92,8 +92,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
-                "projectPath": "d:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj"
               }
             }
           }
@@ -112,6 +112,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[4.6.0, )"
             }
           },
           "imports": [
