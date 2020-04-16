@@ -11,4 +11,5 @@ src/webapi/Permission/Permission.Service/bin/*
 src/webapi/Permission/Permission.Service/obj/*
 src/webapi/Common/Common/bin/*
 src/webapi/Common/Common/obj/*
+src/webapi/NetDataAnnotations/*
 

@@ -18,5 +18,9 @@
     <ProjectReference Include="..\Permission.Service\Permission.Service.csproj" />
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
 </ItemGroup>
-
+<ItemGroup>
+  <None Update="xml\*.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
 </Project>

@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NetDataAnnotations;
 
 namespace Permission.Api
 {
@@ -26,12 +27,16 @@ namespace Permission.Api
             Configuration = configuration;
         }
 
-        public static IConfiguration Configuration { get;set; }
+        public static IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers((opt =>
+            {
+                opt.RespectBrowserAcceptHeader = true;
+                opt.Filters.Add<GlobalActionFilterAttribute>();
+            }));
 
             RegisterRepository(services);
             RegisterService(services);
@@ -57,7 +62,7 @@ namespace Permission.Api
                         //     errStr.AppendFormat("{0}|", item.Value.Errors.FirstOrDefault().ErrorMessage);                            
                         // }
                     }
-                    var resp = Common.Message.RestResponse.error(Common.Message.HttpStatus.INTERNAL_SERVER_ERROR, errStr.ToString().TrimEnd('|'));
+                    var resp = Common.Message.RestResponse.validate(errStr.ToString().TrimEnd('|'));
                     return new JsonResult(resp);
                 };
             });

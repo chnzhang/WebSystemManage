@@ -75,6 +75,16 @@ namespace Common.Message
             return this;
         }
 
+
+        /// <summary>
+        /// 参数校验
+        /// </summary>
+        /// <returns></returns>
+        public static RestResponse validate(string msg)
+        {
+            return new RestResponse(HttpStatus.BAD_REQUEST,msg);
+        }
+
         /// <summary>
         /// 错误
         /// </summary>

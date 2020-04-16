@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Permission.Api.Model;
 using Permission.Entity;
 using Permission.Service;
+using static NetDataAnnotations.BaseModelType;
 
 namespace Permission.Api.Controllers
 {
@@ -95,13 +96,14 @@ namespace Permission.Api.Controllers
         /// <param name="sysUser">用户信息</param>
         /// <returns></returns>
         [HttpPost("add")]
+        [Insert]//设置验证规则group
         public RestResponse Insert([FromBody] SysUserAccount sysUser)
         {
             //验证帐号是否可用
             SysUserAccount sysUserAccount = sysUserAccountService.GetEntity(new { LoginAccount = sysUser.LoginAccount });
             if (sysUserAccount != null)
             {
-                return RestResponse.error("用户名已存在");
+                return RestResponse.validate("用户名已存在");
             }
             //可以此自己处理帐号与用户信息关联           
             sysUser.Salt = Guid.NewGuid().ToString("N");
@@ -110,6 +112,11 @@ namespace Permission.Api.Controllers
 
             int flag = sysUserAccountService.Insert(sysUser);
             return flag > 0 ? RestResponse.success() : RestResponse.error("操作失败");
+        }
+
+        public bool GetAccount(string LoginAccount,string Password)
+        {
+            return true;
         }
 
 

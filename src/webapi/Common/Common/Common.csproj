@@ -5,7 +5,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="NetDataAnnotations" Version="3.0.1" />
   </ItemGroup>
+  <!-- <ItemGroup>
+    <ProjectReference Include="..\..\NetDataAnnotations\NetDataAnnotations.csproj" />  
+</ItemGroup> -->
   <ItemGroup>
     <None Update="fonts\*.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>

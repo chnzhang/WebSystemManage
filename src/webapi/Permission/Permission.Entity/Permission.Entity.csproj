@@ -9,4 +9,5 @@
     <ItemGroup>     
         <ProjectReference Include="..\..\Common\Common\Common.csproj" />
     </ItemGroup>
+    
 </Project>

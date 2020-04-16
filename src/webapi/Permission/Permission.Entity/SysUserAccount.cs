@@ -8,6 +8,7 @@
 using System;
 using Common;
 using System.ComponentModel.DataAnnotations;
+using NetDataAnnotations;
 
 namespace Permission.Entity
 {
@@ -20,16 +21,26 @@ namespace Permission.Entity
 
         ///<summary>
         /// LOGIN_ACCOUNT, varchar
-        ///</summary>
-        [Required(ErrorMessage = "验证码不能为空")]
+        ///</summary>       
+        [NetRequired(MessageKey = "uservalidate:usernamempty", Groups = new[] { typeof(BaseModelType.Insert) })]      
         public virtual string LoginAccount { get; set; }
+
         ///<summary>
         /// PASSWORD, varchar
         ///</summary>
-        [Required(ErrorMessage = "密码不能为空")]
-        [MinLength(6, ErrorMessage = "密码最小长度为6")]
-        [MaxLength(15, ErrorMessage = "密码最大长度为15")]
+        [NetRequired(ErrorMessage = "密码不能为空")]
+        [NetStringLength(15, MinimumLength = 6, ErrorMessage = "密码最小长度为6,最大长度为1", Groups = new[] { typeof(BaseModelType.Insert) })]
         public virtual string Password { get; set; }
+
+
+
+        [NetCompare("Password", ErrorMessage = "两次输入的密码不一致", Groups = new[] { typeof(BaseModelType.Insert) })]
+        public virtual string RePassword { get; set; }
+
+
+        [NetRange(1, 3, ErrorMessage = "状态参数值错误", Groups = new[] { typeof(BaseModelType.Insert) })]
+        public virtual int Status { get; set; }
+
         ///<summary>
         /// SALT, varchar
         ///</summary>
