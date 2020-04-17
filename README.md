@@ -8,5 +8,5 @@ ORM：<a href="https://github.com/dotnetcore/SmartSql">SmartSql</a><br/>
 
 模型验证组件：<a href="https://github.com/chnzhang/NetDataAnnotations">NetDataAnnotations</a>
 <br/>
-验证码组件：<a hef="https://github.com/gebiWangshushu/Hei.Captcha">Hei.Captcha</a><br/>
+验证码组件：<a href="https://github.com/gebiWangshushu/Hei.Captcha">Hei.Captcha</a><br/>
 日志组件：<a href="https://github.com/NLog/NLog">NLog</a>
