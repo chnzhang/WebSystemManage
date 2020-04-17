@@ -8,5 +8,5 @@ ORM：SmartSql<br/>
 
 模型验证组件：<a href="https://github.com/chnzhang/NetDataAnnotations">NetDataAnnotations</a>
 <br/>
-验证码组件：Hei.Captcha
+验证码组件：Hei.Captcha<br/>
 日志组件：NLog
