@@ -48,7 +48,7 @@ namespace Permission.Api.Controllers.SysUser
         [AllowAnonymous]
         public RestResponse Login([FromBody] LoginModel login)
         {
-            //验证 验证码
+            //校验 验证码
             HttpContext.Session.TryGetValue("captcha", out var captch);
             if (captch == null)
             {

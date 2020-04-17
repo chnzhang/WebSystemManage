@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj": {}
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj": {}
   },
   "projects": {
     "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
@@ -49,7 +49,7 @@
             },
             "NetDataAnnotations": {
               "target": "Package",
-              "version": "[3.0.1, )"
+              "version": "[3.0.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -70,14 +70,14 @@
         }
       }
     },
-    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj",
-        "projectName": "permission.api",
-        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\permission.api.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj",
+        "projectName": "Permission.Api",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\Permission.Api.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\permission.api\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -99,14 +99,14 @@
               "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
                 "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj"
               },
-              "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
-                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj"
               },
-              "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
-                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj"
               },
-              "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj": {
-                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj"
               }
             }
           }
@@ -167,14 +167,14 @@
         }
       }
     },
-    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj",
         "projectName": "Permission.Entity",
-        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -233,14 +233,14 @@
         }
       }
     },
-    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj",
         "projectName": "Permission.Repository",
-        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -259,8 +259,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
-                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj"
               }
             }
           }
@@ -315,14 +315,14 @@
         }
       }
     },
-    "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj": {
+    "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj",
+        "projectUniqueName": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj",
         "projectName": "Permission.Service",
-        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\Permission.Service.csproj",
+        "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\Permission.Service.csproj",
         "packagesPath": "C:\\Users\\FHSJ-001\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Service\\obj\\",
+        "outputPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -344,11 +344,11 @@
               "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj": {
                 "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Common\\Common\\Common.csproj"
               },
-              "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj": {
-                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Entity\\Permission.Entity.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Entity\\Permission.Entity.csproj"
               },
-              "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj": {
-                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\permission\\Permission.Repository\\Permission.Repository.csproj"
+              "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj": {
+                "projectPath": "D:\\GitHub\\WebSystemManage\\src\\webapi\\Permission\\Permission.Repository\\Permission.Repository.csproj"
               }
             }
           }

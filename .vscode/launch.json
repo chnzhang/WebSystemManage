@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/webapi/permission/permission.api/bin/Debug/netcoreapp3.1/permission.api.dll",
+            "program": "${workspaceFolder}/src/webapi/Permission/Permission.Api/bin/Debug/netcoreapp3.1/Permission.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/webapi/permission/permission.api",
+            "cwd": "${workspaceFolder}/src/webapi/Permission/Permission.Api",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

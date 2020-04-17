@@ -1,7 +1,7 @@
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using AspectCore.Extensions.Hosting;
+//using AspectCore.Extensions.Hosting;
 using NLog.Web;
 
 namespace Permission.Api
@@ -15,7 +15,7 @@ namespace Permission.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .UseDynamicProxy()
+            //.UseDynamicProxy()
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>()

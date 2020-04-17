@@ -38,7 +38,7 @@ namespace Permission.Entity
         public virtual string RePassword { get; set; }
 
 
-        // [NetRange(1, 3, ErrorMessage = "状态参数值错误", Groups = new[] { typeof(BaseModelType.Insert) })]
+        [NetRange(1, 3, ErrorMessage = "状态参数值错误", Groups = new[] { typeof(BaseModelType.Insert) })]
         public virtual int? Status { get; set; }
 
         ///<summary>

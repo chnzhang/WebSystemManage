@@ -15,7 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Permission.Entity\Permission.Entity.csproj" />
     <ProjectReference Include="..\Permission.Repository\Permission.Repository.csproj" />
-    <ProjectReference Include="..\Permission.Service\Permission.Service.csproj" />
+    <ProjectReference Include="..\Permission.Service\Permission.Service.csproj" /> 
+    
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
 </ItemGroup>
 <ItemGroup>

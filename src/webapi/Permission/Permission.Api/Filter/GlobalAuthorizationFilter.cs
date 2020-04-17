@@ -52,8 +52,8 @@ namespace Permission.Api.Filter
             }
 
             //验证token的有效性
-            SysUserToken sysUserToken = _SysUserTokenService.SysUserTokenRepository.GetEntity(new { Token = token, ExpireTime = DateTime.Now });
-            if (sysUserToken == null)
+            SysUserToken sysUserToken = _SysUserTokenService.SysUserTokenRepository.GetEntity(new { Token = token });
+            if (sysUserToken == null || sysUserToken.ExpireTime <= DateTime.Now)
             {
                 context.HttpContext.Response.Headers["Access-Control-Allow-Credentials"] = "true";
                 context.Result = new JsonResult(RestResponse.error(HttpStatus.UNAUTHORIZED, "invalid token"));
