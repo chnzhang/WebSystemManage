@@ -17,12 +17,13 @@
                 <Result Column="SALT" Property="Salt" />
                 <Result Column="CREATE_TIME" Property="CreateTime" />
                 <Result Column="UPDATE_TIME" Property="UpdateTime" />
+                <Result Column="STATUS" Property="Status" />
         </ResultMap>
     </ResultMaps>
     <Statements>
 
 <Statement Id="AllCols">
-T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>        <Statement Id="QueryParams">
+T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME,T.STATUS</Statement>        <Statement Id="QueryParams">
             <Where>
                     <IsNotEmpty Prepend="And" Property="Id">
                         T.ID = @Id
@@ -42,6 +43,9 @@ T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>  
                     <IsNotEmpty Prepend="And" Property="UpdateTime">
                         T.UPDATE_TIME = @UpdateTime
                     </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Status">
+                        T.STATUS = @Status
+                    </IsNotEmpty>
             </Where>
         </Statement>
 
@@ -55,7 +59,8 @@ T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>  
       PASSWORD,
       SALT,
       CREATE_TIME,
-      UPDATE_TIME
+      UPDATE_TIME,
+      STATUS
     )
     VALUES
     (
@@ -64,7 +69,8 @@ T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>  
       @Password,
       @Salt,
       @CreateTime,
-      @UpdateTime
+      @UpdateTime,
+      @Status
     )
 </Statement>
 
@@ -78,21 +84,24 @@ T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>  
 <Statement Id="Update">
     UPDATE sys_user_account
     <Set>
-                <IsProperty Prepend="," Property="LoginAccount">
+                <IsNotEmpty Prepend="," Property="LoginAccount">
                     LOGIN_ACCOUNT = @LoginAccount
-                </IsProperty>
-                <IsProperty Prepend="," Property="Password">
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="," Property="Password">
                     PASSWORD = @Password
-                </IsProperty>
-                <IsProperty Prepend="," Property="Salt">
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="," Property="Salt">
                     SALT = @Salt
-                </IsProperty>
-                <IsProperty Prepend="," Property="CreateTime">
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="," Property="CreateTime">
                     CREATE_TIME = @CreateTime
-                </IsProperty>
-                <IsProperty Prepend="," Property="UpdateTime">
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="," Property="UpdateTime">
                     UPDATE_TIME = @UpdateTime
-                </IsProperty>
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="," Property="Status">
+                    STATUS = @Status
+                </IsNotEmpty>
     </Set>
     Where ID=@Id
 </Statement>
@@ -108,7 +117,7 @@ T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>  
         <Include RefId="QueryParams"/>
         <Switch Prepend="Order By" Property="OrderBy">
             <Default>
-                T.ID Desc
+                T.CREATE_TIME Desc
             </Default>
         </Switch>
     </Statement>
@@ -121,7 +130,7 @@ T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>  
                 <Include RefId="AllCols"/>
                 From sys_user_account T With(NoLock)
                 <Include RefId="QueryParams"/>
-                Order By T.ID Desc
+                Order By T.CREATE_TIME Desc
                 Offset ((@PageIndex-1)*@PageSize) Rows Fetch Next @PageSize Rows Only;
                 </Statement>
 
@@ -155,6 +164,9 @@ T.ID,T.LOGIN_ACCOUNT,T.PASSWORD,T.SALT,T.CREATE_TIME,T.UPDATE_TIME</Statement>  
                 </IsNotEmpty>
                 <IsNotEmpty Prepend="And" Property="UpdateTime">
                     T.UPDATE_TIME= @UpdateTime
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Status">
+                    T.STATUS= @Status
                 </IsNotEmpty>
         </Where>
     </Statement>

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Hei.Captcha;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Permission.Api.Controllers
 {
@@ -19,6 +20,7 @@ namespace Permission.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("BubbleCode")]
+        [AllowAnonymous]
         public IActionResult BubbleCode()
         {
             var code = _securityCode.GetRandomCnText(2);
@@ -32,10 +34,11 @@ namespace Permission.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("HybridCode")]
+        [AllowAnonymous]
         public IActionResult HybridCode()
         {
             var code = _securityCode.GetRandomEnDigitalText(4);
-            var imgbyte = _securityCode.GetEnDigitalCodeByte(code);          
+            var imgbyte = _securityCode.GetEnDigitalCodeByte(code);
             this.HttpContext.Session.Set("captcha", System.Text.Encoding.Default.GetBytes(code));
             return File(imgbyte, "image/png");
         }
@@ -45,10 +48,11 @@ namespace Permission.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GifBubbleCode")]
+        [AllowAnonymous]
         public IActionResult GifBubbleCode()
         {
             var code = _securityCode.GetRandomCnText(2);
-            var imgbyte = _securityCode.GetGifBubbleCodeByte(code);          
+            var imgbyte = _securityCode.GetGifBubbleCodeByte(code);
             this.HttpContext.Session.Set("captcha", System.Text.Encoding.Default.GetBytes(code));
             return File(imgbyte, "image/gif");
         }
@@ -58,10 +62,11 @@ namespace Permission.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GifHybridCode")]
+        [AllowAnonymous]
         public IActionResult GifHybridCode()
         {
             var code = _securityCode.GetRandomEnDigitalText(4);
-            var imgbyte = _securityCode.GetGifEnDigitalCodeByte(code);           
+            var imgbyte = _securityCode.GetGifEnDigitalCodeByte(code);
             this.HttpContext.Session.Set("captcha", System.Text.Encoding.Default.GetBytes(code));
             return File(imgbyte, "image/gif");
         }

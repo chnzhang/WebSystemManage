@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+//*******************************
+// Create By cnzhang
+// Date 2020-04-17 12:05
+// Code Generate By SmartCode
+// Code Generate Github : https://github.com/Ahoo-Wang/SmartCode
+//*******************************-->
+
+<SmartSqlMap Scope="SysLogOperation" xmlns="http://SmartSql.net/schemas/SmartSqlMap.xsd">
+
+    <ResultMaps>
+        <ResultMap Id="SysLogOperationResultMap">
+                <Result Column="ID" Property="Id" />
+                <Result Column="SYS_USER_ACCOUNT_ID" Property="SysUserAccountId" />
+                <Result Column="OPERATION" Property="Operation" />
+                <Result Column="METHOD" Property="Method" />
+                <Result Column="PARAMS" Property="Params" />
+                <Result Column="TIME" Property="Time" />
+                <Result Column="IP" Property="Ip" />
+                <Result Column="CREATE_TIME" Property="CreateTime" />
+        </ResultMap>
+    </ResultMaps>
+    <Statements>
+
+<Statement Id="AllCols">
+T.ID,T.SYS_USER_ACCOUNT_ID,T.OPERATION,T.METHOD,T.PARAMS,T.TIME,T.IP,T.CREATE_TIME</Statement>        <Statement Id="QueryParams">
+            <Where>
+                    <IsNotEmpty Prepend="And" Property="Id">
+                        T.ID = @Id
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="SysUserAccountId">
+                        T.SYS_USER_ACCOUNT_ID = @SysUserAccountId
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Operation">
+                        T.OPERATION = @Operation
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Method">
+                        T.METHOD = @Method
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Params">
+                        T.PARAMS = @Params
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Time">
+                        T.TIME = @Time
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="Ip">
+                        T.IP = @Ip
+                    </IsNotEmpty>
+                    <IsNotEmpty Prepend="And" Property="CreateTime">
+                        T.CREATE_TIME = @CreateTime
+                    </IsNotEmpty>
+            </Where>
+        </Statement>
+
+
+<!--新增-->
+<Statement Id="Insert">
+    INSERT INTO sys_log_operation
+    (
+      ID,
+      SYS_USER_ACCOUNT_ID,
+      OPERATION,
+      METHOD,
+      PARAMS,
+      TIME,
+      IP,
+      CREATE_TIME
+    )
+    VALUES
+    (
+      @Id,
+      @SysUserAccountId,
+      @Operation,
+      @Method,
+      @Params,
+      @Time,
+      @Ip,
+      @CreateTime
+    )
+</Statement>
+
+<!--删除-->
+<Statement Id="Delete">
+    Delete From sys_log_operation
+    Where ID=@Id
+</Statement>
+
+<!--更新-->
+<Statement Id="Update">
+    UPDATE sys_log_operation
+    <Set>
+                <IsProperty Prepend="," Property="SysUserAccountId">
+                    SYS_USER_ACCOUNT_ID = @SysUserAccountId
+                </IsProperty>
+                <IsProperty Prepend="," Property="Operation">
+                    OPERATION = @Operation
+                </IsProperty>
+                <IsProperty Prepend="," Property="Method">
+                    METHOD = @Method
+                </IsProperty>
+                <IsProperty Prepend="," Property="Params">
+                    PARAMS = @Params
+                </IsProperty>
+                <IsProperty Prepend="," Property="Time">
+                    TIME = @Time
+                </IsProperty>
+                <IsProperty Prepend="," Property="Ip">
+                    IP = @Ip
+                </IsProperty>
+                <IsProperty Prepend="," Property="CreateTime">
+                    CREATE_TIME = @CreateTime
+                </IsProperty>
+    </Set>
+    Where ID=@Id
+</Statement>
+
+    <!--获取数据列-->
+    <Statement Id="Query" ResultMap="SysLogOperationResultMap">
+        SELECT
+        <IsNotEmpty Prepend="Top" Property="Taken">
+            (@Taken)
+        </IsNotEmpty>
+        <Include RefId="AllCols"/>
+        From sys_log_operation T
+        <Include RefId="QueryParams"/>
+        <Switch Prepend="Order By" Property="OrderBy">
+            <Default>
+                T.ID Desc
+            </Default>
+        </Switch>
+    </Statement>
+
+
+    <!--获取分页数据-->
+    <Statement Id="QueryByPage" ResultMap="SysLogOperationResultMap">
+
+                Select 
+                <Include RefId="AllCols"/>
+                From sys_log_operation T With(NoLock)
+                <Include RefId="QueryParams"/>
+                Order By T.ID Desc
+                Offset ((@PageIndex-1)*@PageSize) Rows Fetch Next @PageSize Rows Only;
+                </Statement>
+
+
+<!--获取记录数-->
+<Statement Id="GetRecord">
+    Select Count(1) From sys_log_operation T
+    <Include RefId="QueryParams" />
+</Statement>
+
+    <!--获取表映射实体-->
+    <Statement Id="GetEntity" ResultMap="SysLogOperationResultMap">
+        Select Top 1 
+        <Include RefId="AllCols"/>
+        From sys_log_operation T With(NoLock)
+        <Where Min="1">
+                <IsNotEmpty Prepend="And" Property="Id">
+                    T.ID= @Id
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="SysUserAccountId">
+                    T.SYS_USER_ACCOUNT_ID= @SysUserAccountId
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Operation">
+                    T.OPERATION= @Operation
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Method">
+                    T.METHOD= @Method
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Params">
+                    T.PARAMS= @Params
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Time">
+                    T.TIME= @Time
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="Ip">
+                    T.IP= @Ip
+                </IsNotEmpty>
+                <IsNotEmpty Prepend="And" Property="CreateTime">
+                    T.CREATE_TIME= @CreateTime
+                </IsNotEmpty>
+        </Where>
+    </Statement>
+
+
+<!--是否存在该记录-->
+<Statement Id="IsExist">
+    Select Count(1) From sys_log_operation T
+    <Include RefId="QueryParams" />
+</Statement>
+
+
+    </Statements>
+</SmartSqlMap>

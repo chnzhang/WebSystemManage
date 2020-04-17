@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Permission.Api.Filter;
 using Hei.Captcha;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +36,15 @@ namespace Permission.Api
             services.AddControllers((opt =>
             {
                 opt.RespectBrowserAcceptHeader = true;
+                //全局模型校验注册
                 opt.Filters.Add<GlobalActionFilterAttribute>();
+                //全局权限拦截器
+                opt.Filters.Add<GlobalAuthorizationFilter>();
+                //全局异常拦截器注册
+                opt.Filters.Add<GlobalExceptionFilter>();
+                //全局操作日志拦截器注册
+                opt.Filters.Add<GlobalSysLogFilter>();
+
             }));
 
             RegisterRepository(services);
@@ -122,7 +131,7 @@ namespace Permission.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers();               
             });
 
 

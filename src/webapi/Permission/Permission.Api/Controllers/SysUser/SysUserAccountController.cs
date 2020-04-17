@@ -4,13 +4,16 @@ using Common;
 using Common.Message;
 using Hei.Captcha;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Permission.Api.Filter;
 using Permission.Api.Model;
 using Permission.Entity;
+using Permission.Entity.Enum;
 using Permission.Service;
 using static NetDataAnnotations.BaseModelType;
 
-namespace Permission.Api.Controllers
+namespace Permission.Api.Controllers.SysUser
 {
 
     /// <summary>
@@ -18,15 +21,22 @@ namespace Permission.Api.Controllers
     /// </summary>
     [ApiController]
     [Route("/api/permission/account/")]
-    public class SysUserAccountControler : BaseController
+    public class SysUserAccountController : BaseController
     {
         private readonly SysUserAccountService sysUserAccountService;
         private readonly SysUserTokenService sysUserTokenService;
+        private readonly SysLogLoginService sysLogLoginService;
+        private readonly IHttpContextAccessor accessor;
 
-        public SysUserAccountControler(SysUserAccountService _sysUserAccountService, SysUserTokenService _sysUserTokenService)
+        public SysUserAccountController(SysUserAccountService _sysUserAccountService,
+        SysUserTokenService _sysUserTokenService,
+        SysLogLoginService _sysLogLoginService,
+        IHttpContextAccessor _accessor)
         {
             sysUserAccountService = _sysUserAccountService;
             sysUserTokenService = _sysUserTokenService;
+            sysLogLoginService = _sysLogLoginService;
+            accessor = _accessor;
         }
 
         /// <summary>
@@ -34,20 +44,20 @@ namespace Permission.Api.Controllers
         /// </summary>
         /// <param name="login"></param>
         /// <returns>登录令牌</returns>
-        [AllowAnonymous]
         [HttpPost("login")]
+        [AllowAnonymous]
         public RestResponse Login([FromBody] LoginModel login)
         {
             //验证 验证码
             HttpContext.Session.TryGetValue("captcha", out var captch);
             if (captch == null)
             {
-                return RestResponse.error("验证码错误,请刷新验证码重试");
+                return RestResponse.validate("验证码错误,请刷新验证码重试");
             }
             string Captcha = System.Text.Encoding.Default.GetString(captch);
             if (string.IsNullOrEmpty(Captcha) || !login.Code.Equals(Captcha))
             {
-                return RestResponse.error("验证码错误");
+                return RestResponse.validate("验证码错误");
             }
 
             //验证 用户名、密码
@@ -58,13 +68,20 @@ namespace Permission.Api.Controllers
 
             if (account == null)
             {
-                return RestResponse.error("帐号/密码错误");
+                return RestResponse.validate("帐号/密码错误");
             }
 
+            //比较密码
             string password = Common.EncryptionDecryption.Md5Unit.MD532(login.Password + account.Salt);
             if (!password.Equals(account.Password))
             {
-                return RestResponse.error("帐号/密码错误");
+                return RestResponse.validate("帐号/密码错误");
+            }
+
+            //查询是否被禁用
+            if (account.Status == (int)CommonEnum.STATUS.DISABLE)
+            {
+                return RestResponse.error("您的帐号已被禁止使用,请联系客服");
             }
 
             //生成token
@@ -78,6 +95,7 @@ namespace Permission.Api.Controllers
             userToken = userToken == null ? new SysUserToken() : userToken;
             userToken.SysUserAccountId = account.Id;
             userToken.Token = token;
+
             //查询配置 令牌时效
             double h = Convert.ToDouble(Startup.Configuration["Token:TimeHourExpire"]);
             userToken.ExpireTime = DateTime.Now.AddHours(h);
@@ -85,7 +103,14 @@ namespace Permission.Api.Controllers
 
             int flag = string.IsNullOrEmpty(userToken.Id) ? sysUserTokenService.Insert(userToken) : sysUserTokenService.Update(userToken);
 
+            //写入登录日志
+            SysLogLogin log = new SysLogLogin();
+            log.SysUserAccountId = account.Id;
+            log.Ip = accessor.HttpContext.Request.Headers["X-Forwarded-For"].ToString();
+            sysLogLoginService.Insert(log);
 
+            //清空验证码
+            HttpContext.Session.Remove("captcha");
             return RestResponse.success().put("token", token);
         }
 
@@ -97,27 +122,45 @@ namespace Permission.Api.Controllers
         /// <returns></returns>
         [HttpPost("add")]
         [Insert]//设置验证规则group
-        public RestResponse Insert([FromBody] SysUserAccount sysUser)
+        [SysLog("新增帐号")]
+        public RestResponse Insert([FromBody] SysUserAccount sysUserAccount)
         {
             //验证帐号是否可用
-            SysUserAccount sysUserAccount = sysUserAccountService.GetEntity(new { LoginAccount = sysUser.LoginAccount });
-            if (sysUserAccount != null)
+            SysUserAccount sysUserAccountEntity = sysUserAccountService.GetEntity(new { LoginAccount = sysUserAccount.LoginAccount });
+            if (sysUserAccountEntity != null)
             {
                 return RestResponse.validate("用户名已存在");
             }
             //可以此自己处理帐号与用户信息关联           
-            sysUser.Salt = Guid.NewGuid().ToString("N");
-            sysUser.Password = Common.EncryptionDecryption.Md5Unit.MD532(sysUser.Password + sysUser.Salt);
-            sysUser.UpdateTime = DateTime.Now;
+            sysUserAccount.Salt = Guid.NewGuid().ToString("N");
+            sysUserAccount.Password = Common.EncryptionDecryption.Md5Unit.MD532(sysUserAccount.Password + sysUserAccount.Salt);
+            sysUserAccount.UpdateTime = DateTime.Now;
+            sysUserAccount.Status = (int)CommonEnum.STATUS.ENABLE;
 
-            int flag = sysUserAccountService.Insert(sysUser);
+            int flag = sysUserAccountService.Insert(sysUserAccount);
             return flag > 0 ? RestResponse.success() : RestResponse.error("操作失败");
         }
 
-        public bool GetAccount(string LoginAccount,string Password)
+
+        /// <summary>
+        /// 帐号信息是否可用
+        /// </summary>
+        /// <param name="loginAccount"></param>
+        /// <returns></returns>
+        public RestResponse IsUseAccount(string loginAccount)
         {
-            return true;
+            //验证帐号是否可用
+            SysUserAccount sysUserAccount = sysUserAccountService.GetEntity(new { LoginAccount = loginAccount });
+            if (sysUserAccount != null)
+            {
+                return RestResponse.validate("用户名已存在");
+            }
+            else
+            {
+                return RestResponse.success();
+            }
         }
+
 
 
         /// <summary>
@@ -128,20 +171,27 @@ namespace Permission.Api.Controllers
         [HttpPost("{id}")]
         public RestResponse Get(string id)
         {
-            SysUserAccount sysUser = new SysUserAccount();
-            return RestResponse.success().put("model", sysUser);
+            SysUserAccount sysUserAccount = sysUserAccountService.GetById(id);
+            return RestResponse.success().put("model", sysUserAccount);
         }
 
 
         /// <summary>
         /// 修改帐号信息
         /// </summary>
-        /// <param name="sysUser"></param>
+        /// <param name="sysUserAccount"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        public RestResponse Update([FromBody] SysUserAccount sysUser)
+        [Update]
+        public RestResponse Update([FromBody] SysUserAccount sysUserAccount)
         {
-            int flag = 0;
+            SysUserAccount sysUserAccountEntity = sysUserAccountService.GetEntity(new { LoginAccount = sysUserAccount.LoginAccount });
+            if (sysUserAccount != null && !sysUserAccountEntity.Id.Equals(sysUserAccount.Id))
+            {
+                return RestResponse.validate("用户名已存在");
+            }
+
+            int flag = sysUserAccountService.Update(sysUserAccount);
             return flag > 0 ? RestResponse.success() : RestResponse.error("操作失败");
         }
 
@@ -153,7 +203,7 @@ namespace Permission.Api.Controllers
         [HttpDelete("{id}")]
         public RestResponse DeleteById(string id)
         {
-            int flag = 0;
+            int flag = sysUserAccountService.DeleteById(id);
             return flag > 0 ? RestResponse.success() : RestResponse.error("操作失败");
         }
 
@@ -166,7 +216,9 @@ namespace Permission.Api.Controllers
         [HttpGet("list/{page}/{limit}")]
         public RestResponse QueryList(int page = 1, int limit = 10)
         {
-            IList<SysUserAccount> sysUserList = new List<SysUserAccount>();
+            Pager pager = new Pager(page, limit);
+
+            QueryPageResponse sysUserList = sysUserAccountService.QueryByPage(pager);
             return RestResponse.success().put("page", sysUserList);
         }
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using AspectCore.Extensions.Hosting;
+using NLog.Web;
 
 namespace Permission.Api
 {
@@ -17,7 +18,13 @@ namespace Permission.Api
             .UseDynamicProxy()
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.UseStartup<Startup>();
+                webBuilder.UseStartup<Startup>()
+                .ConfigureKestrel((context, serverOptions) =>
+                 {
+                     // Set properties and call methods on serverOptions
+                     serverOptions.Limits.MinRequestBodyDataRate = null;
+                 })
+                 .UseNLog();
             });
 
 

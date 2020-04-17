@@ -22,24 +22,24 @@ namespace Permission.Entity
         ///<summary>
         /// LOGIN_ACCOUNT, varchar
         ///</summary>       
-        [NetRequired(MessageKey = "uservalidate:usernamempty", Groups = new[] { typeof(BaseModelType.Insert) })]      
+        [NetRequired(MessageKey = "uservalidate:usernamempty", Groups = new[] { typeof(BaseModelType.Insert) })]
         public virtual string LoginAccount { get; set; }
 
         ///<summary>
         /// PASSWORD, varchar
         ///</summary>
-        [NetRequired(ErrorMessage = "密码不能为空")]
-        [NetStringLength(15, MinimumLength = 6, ErrorMessage = "密码最小长度为6,最大长度为1", Groups = new[] { typeof(BaseModelType.Insert) })]
+        [NetRequired(MessageKey = "uservalidate:password.empty", Groups = new[] { typeof(BaseModelType.Insert) })]
+        [NetStringLength(15, MinimumLength = 6, MessageKey = "uservalidate:password.length", Groups = new[] { typeof(BaseModelType.Insert) })]
         public virtual string Password { get; set; }
 
 
 
-        [NetCompare("Password", ErrorMessage = "两次输入的密码不一致", Groups = new[] { typeof(BaseModelType.Insert) })]
+        [NetCompare("Password", MessageKey = "uservalidate:password.rep", Groups = new[] { typeof(BaseModelType.Insert) })]
         public virtual string RePassword { get; set; }
 
 
-        [NetRange(1, 3, ErrorMessage = "状态参数值错误", Groups = new[] { typeof(BaseModelType.Insert) })]
-        public virtual int Status { get; set; }
+        // [NetRange(1, 3, ErrorMessage = "状态参数值错误", Groups = new[] { typeof(BaseModelType.Insert) })]
+        public virtual int? Status { get; set; }
 
         ///<summary>
         /// SALT, varchar
