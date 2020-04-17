@@ -1,7 +1,7 @@
 # WebSystemManage
 .net core3.1 后台权限管理 <br/>
 RBAC权限模型，<br/>
-数据库：SQLSERVER，MYSQL<br/><br/>
+数据库：sqlserver，mysql<br/><br/>
 ORM：SmartSql<br/>
 开发环境：vscode<br/>
 前端：vue+elementui
